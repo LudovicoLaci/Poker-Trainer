@@ -1,5 +1,7 @@
 #!/usr/bin/pyton3
 
+import main
+
 class Deck:
     def __init__(self):
 

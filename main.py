@@ -1,3 +1,25 @@
+#!/usr/bin/python3
+
+import Deck
+import Display
+import Player
+import Save
+import Table
+
+VALUES = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
+SUITS = ['♣','♦','♥','♠']
+
+
+
+
+
+
+
+
+
+
+
+
 ###  PROGRAMME MAIN RUN ###
 TOTAL_CARD_DEALT = 0
 TOTAL_INR_CARD_DEALT = 0
