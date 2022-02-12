@@ -1,5 +1,6 @@
 import random
 import poker
+import Data
 
 class Player:
     POSITIONS = ['UTG','UTG+1','UTG+2','MP','HJ','CO','BU','SB']
@@ -60,7 +61,7 @@ class Player:
         self.record.append([str(poker.Combo.from_cards(self.cards[0],self.cards[1])), self.position, str(self.stack) + ' BB', answer])
 
     def get_range_from_record(self, stack_record, record, category='OPEN_SHOVE'):
-        return poker.Range(BENCB789_OPEN_RANGES_DATABASE[stack_record][record[1]][category])
+        return poker.Range(Data.get_range(Data.df, int(stack_record.strip('BB')), record[1], category)) #BENCB789_OPEN_RANGES_DATABASE[stack_record][record[1]][category]
 
     def is_in_range(self, stack_record, record, category):
         if poker.Combo(record[0]) in self.get_range_from_record(stack_record, record, category).combos:
@@ -139,5 +140,5 @@ class Player:
             else:
                 print('pppppppppppp')
             review_count+=1
-        print(player.record)
+        print(self.record)
         print('Total correct answers : ' +str(TOTAL_CORRECT_ANSWERS) +'/'+ str(review_count))
