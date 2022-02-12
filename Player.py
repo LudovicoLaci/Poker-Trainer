@@ -1,3 +1,6 @@
+import random
+import poker
+
 class Player:
     POSITIONS = ['UTG','UTG+1','UTG+2','MP','HJ','CO','BU','SB']
     def __init__(self, position, stack):
@@ -41,7 +44,7 @@ class Player:
         self.cards.append(card_2)
 
     def display_situation(self):
-        print('\n            ♣♣♣ Q'+ str(i+1) +' ♣♣♣\n')
+        print('\n            ♣♣♣ Q'+ str(0) +' ♣♣♣\n')
         self.show_cards()
         self.show_position()
         self.show_stack()
@@ -138,4 +141,3 @@ class Player:
             review_count+=1
         print(player.record)
         print('Total correct answers : ' +str(TOTAL_CORRECT_ANSWERS) +'/'+ str(review_count))
-

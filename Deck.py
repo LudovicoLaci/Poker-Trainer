@@ -1,6 +1,6 @@
 #!/usr/bin/pyton3
-
-import main
+import random
+import poker
 
 class Deck:
     def __init__(self):

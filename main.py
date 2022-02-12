@@ -1,23 +1,26 @@
 #!/usr/bin/python3
-
-import Deck
+import poker
+from Deck import Deck
 import Display
-import Player
+from Player import Player
 import Save
 import Table
+import pandas as pd
+
+df = pd.DataFrame(pd.read_excel("Ranges.xlsx"))
+
+def get_range(df, BB, POS, PLAY):
+	range = df['RANGE'].loc[(df["BB"] == BB)
+		& (df["POS"] == POS)
+		& (df["PLAY"] == PLAY)]
+	return range.values[0]
+#print(get_range(df, 10, 'UTG', 'OPEN_SHOVE'))
+
+
+
 
 VALUES = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
 SUITS = ['♣','♦','♥','♠']
-
-
-
-
-
-
-
-
-
-
 
 
 ###  PROGRAMME MAIN RUN ###
@@ -80,4 +83,3 @@ print('INR / CARD DEALT: ' + str(TOTAL_INR_CARD_DEALT) + '/' + str(i+1) )
 player.review_record()
 
 output = run("pwd", capture_output=True).stdout
-

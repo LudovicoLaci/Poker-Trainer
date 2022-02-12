@@ -9,8 +9,6 @@ class Table(object):
         self.board = board
         self.pot = pot
         self.players = players
-        
-    def __repr__():
-        
 
-    
+    def __repr__():
+        return
