@@ -9,7 +9,7 @@ POSITIONS = ['UTG','UTG+1','UTG+2','MP','HJ','CO','BU','SB']
 class Player:
 	def __init__(self):
 		self.cards = []
-		self.position = None
+		self.pos = None
 		self.stack = None
 
 	def add_card(self, card):
@@ -18,11 +18,11 @@ class Player:
 	def make_random(self, low, high):
 		positions = POSITIONS
 		random.shuffle(positions)
-		self.position = positions[0]
+		self.pos = positions[0]
 		self.stack = random.randint(low, high)
 
 	def assign_position_to_player(self, position):
-		self.position = position
+		self.pos = position
 
 	def assign_stack_to_player(self, stack):
 		self.stack = stack
