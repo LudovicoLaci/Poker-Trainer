@@ -61,7 +61,7 @@ class Player:
         print('\n*****************************************\n')
         self.input_record.append(answer)
         self.record.append([str(poker.Combo.from_cards(self.cards[0],self.cards[1])), self.position, str(self.stack) + ' BB', answer])
-"
+
     def get_range_from_record(self, stack_record, record, category='OPEN_SHOVE'):
         return poker.Range(Data.get_range(Data.df, int(stack_record.strip('BB')), record[1], category)) #BENCB789_OPEN_RANGES_DATABASE[stack_record][record[1]][category]
 
@@ -76,7 +76,7 @@ class Player:
              return True
          if record[3] == 'False' or 'f' or '0' or 'F':
              return False
-"
+
     def display_review(self, review_count, card_record, position_record, stack_record, answer_record):
         print('                               ♣♣♣ Q'+ str(review_count+1) +' ♣♣♣')
         print('players cards were: ' + card_record , '      ***', poker.Combo.to_hand(poker.Combo(card_record)), '***')

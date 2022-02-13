@@ -26,7 +26,7 @@ class Record:
 		return combo in self.get_range_obj()
 
 	def answer_is_true(self):
-		if self.answer = '':
+		if self.answer == '':
 			return True
 		else:
 			return False
@@ -45,14 +45,14 @@ class Records_book:
 		self.records_count += 1
 
 	def correct_records_book(self):
+		return
 
 
+#card1 = poker.Card("{}{}".format('T','♠'))
+#card2 = poker.Card("{}{}".format('9','♠'))
+#combo = poker.Combo.from_cards(card1, card2)
 
-card1 = poker.Card("{}{}".format('T','♠'))
-card2 = poker.Card("{}{}".format('9','♠'))
-combo = poker.Combo.from_cards(card1, card2)
-
-record = Record('UTG', 10, combo, 'Range')
-print(record.time)
-answer = combo in poker.Range(Data.get_range(Data.df,10,'UTG','TOTAL')).combos
-print(answer)
+#record = Record('UTG', 10, combo, 'Range')
+#print(record.time)
+#answer = combo in poker.Range(Data.get_range(Data.df,10,'UTG','TOTAL')).combos
+#print(answer)

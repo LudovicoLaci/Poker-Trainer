@@ -11,4 +11,4 @@ class Table(object):
         self.players = players
 
     def __repr__():
-        return
+        pass
