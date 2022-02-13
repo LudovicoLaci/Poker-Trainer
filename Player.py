@@ -1,3 +1,5 @@
+#!/usr/bin/pyton3
+
 import random
 import poker
 import Data
