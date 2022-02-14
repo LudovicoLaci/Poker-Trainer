@@ -36,6 +36,12 @@ class Record:
 		else:
 			return False
 
+	def display_record(self):
+		print(f"cards: {self.cards}")
+		print(f"position: {self.pos}")
+		print(f"stack: {self.stack}")
+		print(f"answer: {self.answer}")
+
 class Records_book:
 	def __init__(self, name):
 		self.name = name
@@ -45,7 +51,7 @@ class Records_book:
 		self.correct_answers = 0
 		self.total_answers = 0
 
-	def add_page(self, record):
+	def add_record(self, record):
 		self.records.append(record)
 		self.records_count += 1
 
@@ -57,4 +63,7 @@ class Records_book:
 				record.correction = True
 			else:
 				record.correction = False
-		print(self.records)
+
+	def display_book(self):
+		for record in self.records:
+			record.display_record()

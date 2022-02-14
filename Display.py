@@ -42,6 +42,7 @@ class Display:
 		print(f"stack: {record.stack}")
 		print(f"answer: {record.answer}")
 
-	def display_records_book(self, records_book):
-		for record in records_book.records:
-			print(record)
+	def display_book(self, book):
+		print(type(book))
+		for record in book.records:
+			self.display_record(record)
