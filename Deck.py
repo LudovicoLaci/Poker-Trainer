@@ -1,7 +1,7 @@
 #!/usr/bin/pyton3
 import random
 import poker
-
+import Player2
 
 class Deck:
 	def __init__(self):

@@ -2,6 +2,10 @@
 from datetime import datetime
 import poker
 import Data
+import Display
+import pandas
+import Player2
+import math
 
 now = datetime.now()
 
@@ -9,11 +13,12 @@ values = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
 suits = ['♣','♦','♥','♠']
 
 class Record:
-	def __init__(self, pos=None, stack=None , cards=None, answer=None):
-		self.pos = pos
-		self.stack = stack
-		self.cards = cards
-		self.range = Data.get_range(Data.df, player.stack, player.pos, 'TOTAL')
+	def __init__(self, player, answer):
+		self.pos = player.pos
+		self.stack = player.stack
+		self.cards = player.cards
+		self.combo = poker.Combo.from_cards(self.cards[0], self.cards[1])
+		self.range = poker.Range(Data.get_range(Data.df, math.floor(player.stack), player.pos, 'TOTAL')).combos
 		self.answer = answer
 		self.correction = None
 		self.time = now.strftime("%d/%m/%Y %H:%M:%S")
@@ -45,14 +50,11 @@ class Records_book:
 		self.records_count += 1
 
 	def correct_records_book(self):
-		return
-
-
-#card1 = poker.Card("{}{}".format('T','♠'))
-#card2 = poker.Card("{}{}".format('9','♠'))
-#combo = poker.Combo.from_cards(card1, card2)
-
-#record = Record('UTG', 10, combo, 'Range')
-#print(record.time)
-#answer = combo in poker.Range(Data.get_range(Data.df,10,'UTG','TOTAL')).combos
-#print(answer)
+		for record in self.records:
+			if record.combo in record.range and record.answer:
+				record.correction = True
+			elif not(record.combo in record.range) and not(record.answer):
+				record.correction = True
+			else:
+				record.correction = False
+		print(self.records)

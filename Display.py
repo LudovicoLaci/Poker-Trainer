@@ -30,8 +30,7 @@ class Display:
 		self.display_situation()
 		answer = input('       ♣♣♣ True or False ? ♣♣♣\n')
 		print('\n*****************************************\n')
-		record = Records.Record(player.pos, player.stack, player.cards, answer)
-		records_book.add_page(record)
+		return answer
 
 	def display_range_terminal(self, record):
 		print(record.get_range_obj().to_ascii(boarder=True))
@@ -42,3 +41,7 @@ class Display:
 		print(f"position: {record.pos}")
 		print(f"stack: {record.stack}")
 		print(f"answer: {record.answer}")
+
+	def display_records_book(self, records_book):
+		for record in records_book.records:
+			print(record)
