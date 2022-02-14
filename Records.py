@@ -6,6 +6,7 @@ import Display
 import pandas
 import Player2
 import math
+import copy
 
 now = datetime.now()
 
@@ -13,15 +14,19 @@ values = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
 suits = ['♣','♦','♥','♠']
 
 class Record:
-	def __init__(self, player, answer):
-		self.pos = player.pos
-		self.stack = player.stack
-		self.cards = player.cards
+	def __init__(self, player):
+		self.pos = copy.deepcopy(player.pos)
+		self.stack = copy.deepcopy(player.stack)
+		self.cards = [card for card in player.cards]
 		self.combo = poker.Combo.from_cards(self.cards[0], self.cards[1])
-		self.range = poker.Range(Data.get_range(Data.df, math.floor(player.stack), player.pos, 'TOTAL')).combos
-		self.answer = answer
+		self.range_obj = poker.Range(Data.get_range(Data.df, self.stack, self.pos, 'TOTAL'))
+		self.range = poker.Range(Data.get_range(Data.df, self.stack, self.pos, 'TOTAL')).combos
+		self.answer = None
 		self.correction = None
 		self.time = now.strftime("%d/%m/%Y %H:%M:%S")
+
+	def set_answer(self, answer):
+		self.answer = answer
 
 	def get_range_obj(self):
 		return poker.Range(self.range)
@@ -41,6 +46,8 @@ class Record:
 		print(f"position: {self.pos}")
 		print(f"stack: {self.stack}")
 		print(f"answer: {self.answer}")
+		print(f"correction: {self.correction}")
+		print(f"{self.range_obj.to_ascii()}")
 
 class Records_book:
 	def __init__(self, name):
