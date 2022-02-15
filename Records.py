@@ -42,12 +42,13 @@ class Record:
 			return False
 
 	def display_record(self):
-		print(f"cards: {self.cards}")
+		print(f"\ncards: {self.cards}")
 		print(f"position: {self.pos}")
 		print(f"stack: {self.stack}")
 		print(f"answer: {self.answer}")
 		print(f"correction: {self.correction}")
 		print(f"{self.range_obj.to_ascii()}")
+		print(f"{self.time}\n")
 
 class Records_book:
 	def __init__(self, name):
